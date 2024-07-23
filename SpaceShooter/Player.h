@@ -3,18 +3,17 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Audio/Sound.hpp>
 
-class Player
+#include "GameObject.h"
+
+class Player : public GameObject
 {
 public:
   Player();
 
-  void update(float deltaTime);
-  const sf::Sprite& getSprite() const;
+  void update(float deltaTime) override;
 
 private:
-  sf::Sprite _sprite;
   sf::Sound _shootingSound;
-
   float _speed;
 };
 

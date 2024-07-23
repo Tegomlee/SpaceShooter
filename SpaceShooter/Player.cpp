@@ -5,16 +5,10 @@
 #include "ResourceManager.h"
 
 Player::Player()
-  : _speed(50)
+  : _speed(150.f), GameObject("Assets/Images/player.png")
 {
   // Set player resources
-  _sprite.setTexture(ResourceManager::getTexture("Assets/Images/player.png"));
   _shootingSound.setBuffer(ResourceManager::getSoundBuffer("Assets/Sounds/playerLaser.ogg"));
-
-  // Set player pivot point to the center of the sprite
-  float xPoint = ResourceManager::getTexture("Assets/Images/player.png").getSize().x / 2.f;
-  float yPoint = ResourceManager::getTexture("Assets/Images/player.png").getSize().y / 2.f;
-  _sprite.setOrigin(xPoint, yPoint);
 
   // Set player starting position
   _sprite.setPosition(400, 700);
@@ -43,9 +37,4 @@ void Player::update(float deltaTime)
   // Update a time between shot timer
 
   // Shoot a projectile if the cooldown is over and reset the timer to 0
-}
-
-const sf::Sprite& Player::getSprite() const
-{
-  return _sprite;
 }
