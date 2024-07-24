@@ -5,6 +5,7 @@
 
 // Testing
 #include "Player.h"
+#include "Enemy.h"
 
 class Engine
 {
@@ -24,5 +25,6 @@ private:
 
   // Testing
   Player _player;
+  Enemy _enemy;
 };
 

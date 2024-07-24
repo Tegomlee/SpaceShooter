@@ -37,4 +37,7 @@ void Player::update(float deltaTime)
   // Update a time between shot timer
 
   // Shoot a projectile if the cooldown is over and reset the timer to 0
+
+  // TESTING: check how rotations work
+  GameObject::lookAt(_sprite, sf::Vector2f(400, 100), true);
 }

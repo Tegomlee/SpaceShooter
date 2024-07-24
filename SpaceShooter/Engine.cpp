@@ -3,7 +3,8 @@
 #include <SFML/Window/Event.hpp>
 
 Engine::Engine()
-  : _window(sf::VideoMode(800, 800), "Space Shooter by Tegomlee")
+  : _window(sf::VideoMode(800, 800), "Space Shooter by Tegomlee"),
+    _enemy(_player)
 {
 }
 
@@ -45,6 +46,7 @@ void Engine::render()
 
   // Draw items (Order matters, last item is drawn over first item)
   _window.draw(_player.getSprite());
+  _window.draw(_enemy.getSprite());
 
   // Send the finished canvas to the screen
   _window.display();
