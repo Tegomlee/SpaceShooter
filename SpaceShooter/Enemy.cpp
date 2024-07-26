@@ -2,8 +2,8 @@
 
 #include "ResourceManager.h"
 
-Enemy::Enemy(Player& player)
-  : _player(player), GameObject("Assets/Images/enemy1.png")
+Enemy::Enemy()
+  : GameObject("Assets/Images/enemy1.png")
 {
   // Set enemy resources
   _shootingSound.setBuffer(ResourceManager::getSoundBuffer("Assets/Sounds/enemyLaser.ogg"));

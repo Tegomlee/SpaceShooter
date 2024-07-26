@@ -3,11 +3,14 @@
 #include <SFML/Window/Event.hpp>
 
 #include "Constants.h"
+#include "EnemyPooler.h"
 
 Engine::Engine()
-  : _window(sf::VideoMode(cnsts::windowWidth, cnsts::windowHeight), "Space Shooter by Tegomlee"),
-    _enemy(_player)
+  : _window(sf::VideoMode(cnsts::windowWidth, cnsts::windowHeight), "Space Shooter by Tegomlee")
 {
+  EnemyPooler::initialize(1);
+
+  _enemy = EnemyPooler::getEnemy();
 }
 
 void Engine::run()
@@ -15,7 +18,7 @@ void Engine::run()
   while (_window.isOpen())
   {
     processEvents();
-    update();
+    processUpdates();
     render();
   }
 }
@@ -32,13 +35,15 @@ void Engine::processEvents()
   }
 }
 
-void Engine::update()
+void Engine::processUpdates()
 {
   // Get the delta time for frame rate independence
   float deltaTime = _clock.restart().asSeconds();
 
   // Update all objects
   _player.update(deltaTime);
+  
+  EnemyPooler::updateActiveEnemies(deltaTime);
 }
 
 void Engine::render()
@@ -48,7 +53,7 @@ void Engine::render()
 
   // Draw items (Order matters, last item is drawn over first item)
   _window.draw(_player.getSprite());
-  _window.draw(_enemy.getSprite());
+  _window.draw(_enemy->getSprite());
 
   // Send the finished canvas to the screen
   _window.display();

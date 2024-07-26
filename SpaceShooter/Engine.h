@@ -16,7 +16,7 @@ public:
 
 private:
   void processEvents();
-  void update();
+  void processUpdates();
   void render();
 
 private:
@@ -25,6 +25,6 @@ private:
 
   // Testing
   Player _player;
-  Enemy _enemy;
+  Enemy* _enemy;
 };
 
