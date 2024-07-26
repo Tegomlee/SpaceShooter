@@ -2,8 +2,10 @@
 
 #include <SFML/Window/Event.hpp>
 
+#include "Constants.h"
+
 Engine::Engine()
-  : _window(sf::VideoMode(800, 800), "Space Shooter by Tegomlee"),
+  : _window(sf::VideoMode(cnsts::windowWidth, cnsts::windowHeight), "Space Shooter by Tegomlee"),
     _enemy(_player)
 {
 }

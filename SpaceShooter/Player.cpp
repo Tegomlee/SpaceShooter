@@ -3,15 +3,16 @@
 #include <SFML/Window/Keyboard.hpp>
 
 #include "ResourceManager.h"
+#include "Constants.h"
 
 Player::Player()
-  : _speed(150.f), GameObject("Assets/Images/player.png")
+  : _speed(cnsts::playerSpeed), GameObject("Assets/Images/player.png")
 {
   // Set player resources
   _shootingSound.setBuffer(ResourceManager::getSoundBuffer("Assets/Sounds/playerLaser.ogg"));
 
   // Set player starting position
-  _sprite.setPosition(400, 700);
+  _sprite.setPosition(cnsts::playerStartingPosX, cnsts::playerStartingPosY);
 }
 
 void Player::update(float deltaTime)
